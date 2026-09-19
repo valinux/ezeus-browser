@@ -1,0 +1,31 @@
+#ifndef EEVENTSELECTIONWIDGET_H
+#define EEVENTSELECTIONWIDGET_H
+
+#include "escrollbuttonslist.h"
+
+#include "pointers/estdselfref.h"
+
+class eGameEvent;
+class eGameBoard;
+enum class eCityId;
+
+enum class eGameEventBranch;
+
+class eEventSelectionWidget : public eScrollButtonsList {
+public:
+    eEventSelectionWidget(const eGameEventBranch branch,
+                          eMainWindow* const window);
+
+    using eEventsGetter = std::function<std::vector<stdsptr<eGameEvent>>()>;
+    using eEventAdder = std::function<void(const stdsptr<eGameEvent>&)>;
+    using eEventRemover = std::function<void(const stdsptr<eGameEvent>&)>;
+    void initialize(const eCityId cid,
+                    const eEventsGetter& get,
+                    const eEventAdder& add,
+                    const eEventRemover& remove,
+                    eGameBoard& board);
+private:
+    const eGameEventBranch mBranch;
+};
+
+#endif // EEVENTSELECTIONWIDGET_H

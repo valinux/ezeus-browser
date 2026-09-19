@@ -1,0 +1,68 @@
+#ifndef EATLASHELPACTION_H
+#define EATLASHELPACTION_H
+
+#include "characters/actions/egodaction.h"
+
+enum class eAtlasHelpStage {
+    none, appear, goTo, give, disappear
+};
+
+class eAtlasHelpAction : public eGodAction {
+public:
+    eAtlasHelpAction(eCharacter* const c);
+
+    bool decide() override;
+
+    void read(eReadStream& src) override;
+    void write(eWriteStream& dst) const override;
+
+    static bool sHelpNeeded(const eCityId cid,
+                            const eGameBoard& board);
+private:
+    void goToTarget();
+    void give();
+
+    eAtlasHelpStage mStage{eAtlasHelpStage::none};
+    stdptr<eMonument> mTarget;
+};
+
+class eAtlasHelpAct : public eGodAct {
+public:
+    eAtlasHelpAct(eGameBoard& board,
+                  eMonument* const target) :
+        eGodAct(board, eGodActType::atlasHelp),
+        mTarget(target) {}
+
+    eAtlasHelpAct(eGameBoard& board) :
+        eAtlasHelpAct(board, nullptr) {}
+
+    eMissileTarget find(eTile* const t) {
+        (void)t;
+        const auto null = static_cast<eTile*>(nullptr);
+        return null;
+    }
+
+    void act() {
+        if(mTarget) {
+            mTarget->add(eResourceType::wood, 8);
+            const int m = mTarget->add(eResourceType::marble, 12);
+            mTarget->add(eResourceType::sculpture, 4);
+            if(m < 12) mTarget->add(eResourceType::blackMarble, 12 - m);
+            mTarget->add(eResourceType::orichalc, 8);
+        }
+    }
+
+    void read(eReadStream& src) {
+        src.readBuilding(&board(), [this](eBuilding* const b) {
+            mTarget = static_cast<eMonument*>(b);
+        });
+    }
+
+    void write(eWriteStream& dst) const {
+        dst.writeBuilding(mTarget);
+    }
+private:
+    stdptr<eMonument> mTarget;
+};
+
+#endif // EATLASHELPACTION_H

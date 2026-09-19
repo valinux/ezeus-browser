@@ -1,0 +1,353 @@
+#include "echaracter.h"
+
+#include "eactor.h"
+#include "earcher.h"
+#include "eartisan.h"
+#include "eboar.h"
+#include "ebronzeminer.h"
+#include "ecarttransporter.h"
+#include "edeer.h"
+#include "ewolf.h"
+#include "edonkey.h"
+#include "efirefighter.h"
+#include "efishingboat.h"
+#include "eurchingatherer.h"
+#include "egoat.h"
+#include "egoatherd.h"
+#include "egreekhoplite.h"
+#include "egreekhorseman.h"
+#include "egreekrockthrower.h"
+#include "etrojanhoplite.h"
+#include "etrojanspearthrower.h"
+#include "etrojanhorseman.h"
+#include "ecentaurhorseman.h"
+#include "ecentaurarcher.h"
+#include "epersianhoplite.h"
+#include "epersianhorseman.h"
+#include "epersianarcher.h"
+#include "eegyptianhoplite.h"
+#include "eegyptianchariot.h"
+#include "eegyptianarcher.h"
+#include "eatlanteanhoplite.h"
+#include "eatlanteanchariot.h"
+#include "eatlanteanarcher.h"
+#include "emayanhoplite.h"
+#include "emayanarcher.h"
+#include "eoceanidhoplite.h"
+#include "eoceanidspearthrower.h"
+#include "ephoenicianhorseman.h"
+#include "ephoenicianarcher.h"
+#include "eamazon.h"
+#include "eareswarrior.h"
+#include "egrower.h"
+#include "egymnast.h"
+#include "ehealer.h"
+#include "ehoplite.h"
+#include "ehorse.h"
+#include "ehorseman.h"
+#include "ehunter.h"
+#include "elumberjack.h"
+#include "emarbleminer.h"
+#include "eox.h"
+#include "epeddler.h"
+#include "ephilosopher.h"
+#include "eporter.h"
+#include "erockthrower.h"
+#include "esettler.h"
+#include "esheep.h"
+#include "eshepherd.h"
+#include "esilverminer.h"
+#include "etaxcollector.h"
+#include "etradeboat.h"
+#include "etrader.h"
+#include "etrailer.h"
+#include "ewatchman.h"
+#include "ewaterdistributor.h"
+#include "ehomeless.h"
+#include "edisgruntled.h"
+#include "esick.h"
+#include "ebutcher.h"
+#include "ecattle.h"
+#include "echariot.h"
+
+#include "escholar.h"
+#include "eastronomer.h"
+#include "einventor.h"
+#include "ecurator.h"
+#include "ecompetitor.h"
+
+#include "ehopliteposeidon.h"
+#include "earcherposeidon.h"
+#include "echariotposeidon.h"
+
+#include "monsters/ecalydonianboar.h"
+
+#include "gods/eathena.h"
+#include "gods/edemeter.h"
+#include "gods/edionysus.h"
+#include "gods/ehermes.h"
+
+#include "heroes/eachilles.h"
+
+#include "characters/eelitecitizen.h"
+#include "characters/etrireme.h"
+#include "characters/eenemyboat.h"
+#include "characters/eorichalcminer.h"
+
+stdsptr<eCharacter> eCharacter::sCreate(
+        const eCharacterType t, eGameBoard& board) {
+    switch(t) {
+    case eCharacterType::none:
+        return nullptr;
+    case eCharacterType::cattle1:
+    case eCharacterType::cattle2:
+    case eCharacterType::cattle3:
+    case eCharacterType::bull:
+        return e::make_shared<eCattle>(board, t);
+    case eCharacterType::actor:
+        return e::make_shared<eActor>(board);
+    case eCharacterType::archer:
+        return e::make_shared<eArcher>(board);
+    case eCharacterType::artisan:
+        return e::make_shared<eArtisan>(board);
+    case eCharacterType::boar:
+        return e::make_shared<eBoar>(board);
+    case eCharacterType::bronzeMiner:
+        return e::make_shared<eBronzeMiner>(board);
+    case eCharacterType::orichalcMiner:
+        return e::make_shared<eOrichalcMiner>(board);
+    case eCharacterType::cartTransporter:
+        return e::make_shared<eCartTransporter>(board);
+    case eCharacterType::chariot:
+        return e::make_shared<eChariot>(board);
+    case eCharacterType::deer:
+        return e::make_shared<eDeer>(board);
+    case eCharacterType::wolf:
+        return e::make_shared<eWolf>(board);
+    case eCharacterType::donkey:
+        return e::make_shared<eDonkey>(board);
+    case eCharacterType::fireFighter:
+        return e::make_shared<eFireFighter>(board);
+    case eCharacterType::urchinGatherer:
+        return e::make_shared<eUrchinGatherer>(board);
+    case eCharacterType::fishingBoat:
+        return e::make_shared<eFishingBoat>(board);
+    case eCharacterType::goat:
+        return e::make_shared<eGoat>(board);
+    case eCharacterType::goatherd:
+        return e::make_shared<eGoatherd>(board);
+    case eCharacterType::greekHoplite:
+        return e::make_shared<eGreekHoplite>(board);
+    case eCharacterType::greekHorseman:
+        return e::make_shared<eGreekHorseman>(board);
+    case eCharacterType::greekRockThrower:
+        return e::make_shared<eGreekRockThrower>(board);
+    case eCharacterType::trojanHoplite:
+        return e::make_shared<eTrojanHoplite>(board);
+    case eCharacterType::trojanHorseman:
+        return e::make_shared<eTrojanHorseman>(board);
+    case eCharacterType::trojanSpearthrower:
+        return e::make_shared<eTrojanSpearthrower>(board);
+    case eCharacterType::centaurHorseman:
+        return e::make_shared<eCentaurHorseman>(board);
+    case eCharacterType::centaurArcher:
+        return e::make_shared<eCentaurArcher>(board);
+    case eCharacterType::egyptianHoplite:
+        return e::make_shared<eEgyptianHoplite>(board);
+    case eCharacterType::egyptianChariot:
+        return e::make_shared<eEgyptianChariot>(board);
+    case eCharacterType::egyptianArcher:
+        return e::make_shared<eEgyptianArcher>(board);
+    case eCharacterType::atlanteanHoplite:
+        return e::make_shared<eAtlanteanHoplite>(board);
+    case eCharacterType::atlanteanChariot:
+        return e::make_shared<eAtlanteanChariot>(board);
+    case eCharacterType::atlanteanArcher:
+        return e::make_shared<eAtlanteanArcher>(board);
+    case eCharacterType::mayanHoplite:
+        return e::make_shared<eMayanHoplite>(board);
+    case eCharacterType::mayanArcher:
+        return e::make_shared<eMayanArcher>(board);
+    case eCharacterType::oceanidHoplite:
+        return e::make_shared<eOceanidHoplite>(board);
+    case eCharacterType::oceanidSpearthrower:
+        return e::make_shared<eOceanidSpearthrower>(board);
+    case eCharacterType::phoenicianHorseman:
+        return e::make_shared<ePhoenicianHorseman>(board);
+    case eCharacterType::phoenicianArcher:
+        return e::make_shared<ePhoenicianArcher>(board);
+    case eCharacterType::persianHoplite:
+        return e::make_shared<ePersianHoplite>(board);
+    case eCharacterType::persianHorseman:
+        return e::make_shared<ePersianHorseman>(board);
+    case eCharacterType::persianArcher:
+        return e::make_shared<ePersianArcher>(board);
+    case eCharacterType::amazon:
+        return e::make_shared<eAmazon>(board);
+    case eCharacterType::aresWarrior:
+        return e::make_shared<eAresWarrior>(board);
+    case eCharacterType::grower:
+        return e::make_shared<eGrower>(board);
+    case eCharacterType::gymnast:
+        return e::make_shared<eGymnast>(board);
+    case eCharacterType::healer:
+        return e::make_shared<eHealer>(board);
+    case eCharacterType::hoplite:
+        return e::make_shared<eHoplite>(board);
+    case eCharacterType::horse:
+        return e::make_shared<eHorse>(board);
+    case eCharacterType::horseman:
+        return e::make_shared<eHorseman>(board);
+    case eCharacterType::hunter:
+        return e::make_shared<eHunter>(board);
+    case eCharacterType::butcher:
+        return e::make_shared<eButcher>(board);
+    case eCharacterType::lumberjack:
+        return e::make_shared<eLumberjack>(board);
+    case eCharacterType::marbleMiner:
+        return e::make_shared<eMarbleMiner>(board);
+    case eCharacterType::ox:
+        return e::make_shared<eOx>(board);
+    case eCharacterType::peddler:
+        return e::make_shared<ePeddler>(board);
+    case eCharacterType::philosopher:
+        return e::make_shared<ePhilosopher>(board);
+    case eCharacterType::porter:
+        return e::make_shared<ePorter>(board);
+    case eCharacterType::rockThrower:
+        return e::make_shared<eRockThrower>(board);
+    case eCharacterType::settler:
+        return e::make_shared<eSettler>(board);
+    case eCharacterType::sheep:
+        return e::make_shared<eSheep>(board);
+    case eCharacterType::shepherd:
+        return e::make_shared<eShepherd>(board);
+    case eCharacterType::silverMiner:
+        return e::make_shared<eSilverMiner>(board);
+    case eCharacterType::taxCollector:
+        return e::make_shared<eTaxCollector>(board);
+    case eCharacterType::tradeBoat:
+        return e::make_shared<eTradeBoat>(board);
+    case eCharacterType::trader:
+        return e::make_shared<eTrader>(board);
+    case eCharacterType::trailer:
+        return e::make_shared<eTrailer>(board);
+    case eCharacterType::watchman:
+        return e::make_shared<eWatchman>(board);
+    case eCharacterType::waterDistributor:
+        return e::make_shared<eWaterDistributor>(board);
+    case eCharacterType::homeless:
+        return e::make_shared<eHomeless>(board);
+    case eCharacterType::disgruntled:
+        return e::make_shared<eDisgruntled>(board);
+    case eCharacterType::sick:
+        return e::make_shared<eSick>(board);
+
+    case eCharacterType::calydonianBoar:
+        return e::make_shared<eCalydonianBoar>(board);
+    case eCharacterType::cerberus:
+        return e::make_shared<eCerberus>(board);
+    case eCharacterType::chimera:
+        return e::make_shared<eChimera>(board);
+    case eCharacterType::cyclops:
+        return e::make_shared<eCyclops>(board);
+    case eCharacterType::dragon:
+        return e::make_shared<eDragon>(board);
+    case eCharacterType::echidna:
+        return e::make_shared<eEchidna>(board);
+    case eCharacterType::harpies:
+        return e::make_shared<eHarpies>(board);
+    case eCharacterType::hector:
+        return e::make_shared<eHector>(board);
+    case eCharacterType::hydra:
+        return e::make_shared<eHydra>(board);
+    case eCharacterType::kraken:
+        return e::make_shared<eKraken>(board);
+    case eCharacterType::maenads:
+        return e::make_shared<eMaenads>(board);
+    case eCharacterType::medusa:
+        return e::make_shared<eMedusa>(board);
+    case eCharacterType::minotaur:
+        return e::make_shared<eMinotaur>(board);
+    case eCharacterType::scylla:
+        return e::make_shared<eScylla>(board);
+    case eCharacterType::sphinx:
+        return e::make_shared<eSphinx>(board);
+    case eCharacterType::talos:
+        return e::make_shared<eTalos>(board);
+    case eCharacterType::satyr:
+        return e::make_shared<eSatyr>(board);
+
+    case eCharacterType::aphrodite:
+        return e::make_shared<eAphrodite>(board);
+    case eCharacterType::apollo:
+        return e::make_shared<eApollo>(board);
+    case eCharacterType::ares:
+        return e::make_shared<eAres>(board);
+    case eCharacterType::artemis:
+        return e::make_shared<eArtemis>(board);
+    case eCharacterType::athena:
+        return e::make_shared<eAthena>(board);
+    case eCharacterType::atlas:
+        return e::make_shared<eAtlas>(board);
+    case eCharacterType::demeter:
+        return e::make_shared<eDemeter>(board);
+    case eCharacterType::dionysus:
+        return e::make_shared<eDionysus>(board);
+    case eCharacterType::hades:
+        return e::make_shared<eHades>(board);
+    case eCharacterType::hephaestus:
+        return e::make_shared<eHephaestus>(board);
+    case eCharacterType::hera:
+        return e::make_shared<eHera>(board);
+    case eCharacterType::hermes:
+        return e::make_shared<eHermes>(board);
+    case eCharacterType::poseidon:
+        return e::make_shared<ePoseidon>(board);
+    case eCharacterType::zeus:
+        return e::make_shared<eZeus>(board);
+
+    case eCharacterType::achilles:
+        return e::make_shared<eAchilles>(board);
+    case eCharacterType::atalanta:
+        return e::make_shared<eAtalanta>(board);
+    case eCharacterType::bellerophon:
+        return e::make_shared<eBellerophon>(board);
+    case eCharacterType::hercules:
+        return e::make_shared<eHercules>(board);
+    case eCharacterType::jason:
+        return e::make_shared<eJason>(board);
+    case eCharacterType::odysseus:
+        return e::make_shared<eOdysseus>(board);
+    case eCharacterType::perseus:
+        return e::make_shared<ePerseus>(board);
+    case eCharacterType::theseus:
+        return e::make_shared<eTheseus>(board);
+
+    case eCharacterType::scholar:
+        return e::make_shared<eScholar>(board);
+    case eCharacterType::astronomer:
+        return e::make_shared<eAstronomer>(board);
+    case eCharacterType::inventor:
+        return e::make_shared<eInventor>(board);
+    case eCharacterType::curator:
+        return e::make_shared<eCurator>(board);
+    case eCharacterType::competitor:
+        return e::make_shared<eCompetitor>(board);
+
+    case eCharacterType::hoplitePoseidon:
+        return e::make_shared<eHoplitePoseidon>(board);
+    case eCharacterType::archerPoseidon:
+        return e::make_shared<eArcherPoseidon>(board);
+    case eCharacterType::chariotPoseidon:
+        return e::make_shared<eChariotPoseidon>(board);
+
+    case eCharacterType::eliteCitizen:
+        return e::make_shared<eEliteCitizen>(board);
+    case eCharacterType::trireme:
+        return e::make_shared<eTrireme>(board);
+    case eCharacterType::enemyBoat:
+        return e::make_shared<eEnemyBoat>(board);
+    }
+    return nullptr;
+}

@@ -1,0 +1,198 @@
+{
+  "status": "pass",
+  "states": [
+    {
+      "mode": "poseidon",
+      "plan": "elite",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "elite",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "elite",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "elite",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "elite",
+      "difficulty": "Olympian",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "workers",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "workers",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "workers",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "workers",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "workers",
+      "difficulty": "Olympian",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "support",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "support",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "support",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "support",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "poseidon",
+      "plan": "support",
+      "difficulty": "Olympian",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "elite",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "elite",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "elite",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "elite",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "elite",
+      "difficulty": "Olympian",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "workers",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "workers",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "workers",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "workers",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "workers",
+      "difficulty": "Olympian",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "support",
+      "difficulty": "Beginner",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "support",
+      "difficulty": "Mortal",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "support",
+      "difficulty": "Hero",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "support",
+      "difficulty": "Titan",
+      "status": "pass"
+    },
+    {
+      "mode": "zeus",
+      "plan": "support",
+      "difficulty": "Olympian",
+      "status": "pass"
+    }
+  ],
+  "checks": [
+    "initial load",
+    "30 civilization/district/difficulty states",
+    "building inspector",
+    "layer focus",
+    "tile and label toggles",
+    "checklist persistence",
+    "SVG and CSV downloads",
+    "390px mobile overflow",
+    "SVG/PNG/PDF exports"
+  ],
+  "runtimeExceptions": [],
+  "missingLocalLinks": []
+}

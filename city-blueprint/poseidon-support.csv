@@ -1,0 +1,15 @@
+id,building,column_1_based,row_1_based,width,height,note
+school-0,University,3,6,3,3,Starter allowance: one trainer for each district. Watch actual arrivals and add capacity if a venue waits for trainees.
+school-1,University,7,6,3,3,Starter allowance: one trainer for each district. Watch actual arrivals and add capacity if a venue waits for trainees.
+workshop-0,Inventors’ Workshop,11,6,3,3,Trains the specialist who walks through roadblocks to the service venue. Keep a continuous road to both districts.
+workshop-1,Inventors’ Workshop,15,6,3,3,Trains the specialist who walks through roadblocks to the service venue. Keep a continuous road to both districts.
+granary,Granary,19,5,4,4,Food vendor buyers collect here. Accept only foods you actually produce or import; set getting orders when relying on a distant distribution hub.
+store-1,Storehouse · household goods,24,6,3,3,"Reserve bays for fleece, olive oil and wine. Use receiving/getting orders appropriate to your supply network."
+store-2,Storehouse · armor & ranch supplies,28,6,3,3,Reserve armor and wheat for the Horse Ranch; wheat stored here is not citizen food. In Atlantis also reserve factory wood. Finished chariots come from the Chariot Factory; a warehouse of wood alone cannot supply an elite home.
+maintenance,Maintenance Office,31,7,2,2,Protects the supply and training buildings.
+palace,Palace,3,10,9,6,"One per city, required for taxation and military organization. If already built, keep the existing Palace and omit this copy."
+maintenance-2,Maintenance Office,13,10,2,2,A second office provides overlap around the shared civic and storage facilities.
+watch,Watchpost · optional,15,10,2,2,Optional security capacity.
+road,Continuous road,1,9,33,1,"Build first, including beneath the Agora."
+roadblock-0,Roadblock,2,9,1,1,Place on existing road. Keep city intersections outside.
+roadblock-1,Roadblock,32,9,1,1,Place on existing road. Keep city intersections outside.

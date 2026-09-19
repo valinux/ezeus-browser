@@ -1,0 +1,416 @@
+#ifndef EEVENT_H
+#define EEVENT_H
+
+enum class eEvent {
+    fire,
+    collapse,
+
+    godVisit,
+    godInvasion,
+    godHelp,
+    godQuest,
+    godQuestFulfilled,
+    godMonsterUnleash,
+
+    sanctuaryComplete,
+
+    modestPyramidComplete1,
+    pyramidComplete2,
+    greatPyramidComplete3,
+    majesticPyramidComplete4,
+
+    smallMonumentToTheSkyComplete5,
+    monumentToTheSkyComplete6,
+    grandMonumentToTheSkyComplete7,
+
+    minorShrineComplete8,
+    shrineComplete9,
+    majorShrineComplete10,
+
+    pyramidOfThePantheonComplete11,
+    altarOfOlympusComplete12,
+    templeOfOlympusComplete13,
+    observatoryKosmikaComplete14,
+    museumAtlantikaComplete15,
+
+    heroArrival,
+
+    monsterInvasionInitial,
+    monsterInvasion24,
+    monsterInvasion12,
+    monsterInvasion6,
+    monsterInvasion1,
+    monsterInvasion,
+    monsterSlain,
+
+    monsterInCity,
+
+    invasionInitial,
+    invasion24,
+    invasion12,
+    invasion6,
+    invasion1,
+    invasion,
+    invasionDefeat,
+    invasionVictoryMonn,
+    invasionVictory,
+    invasionBribed,
+
+    playerInvasion,
+    playerGodAttack,
+
+    tributePaid,
+    tributeAccepted,
+    tributeDeclined,
+    tributePostponed,
+
+    requestGranted,
+    requestPartialSpace,
+    requestInsufficientSpace,
+    requestLastChance,
+    requestAccepted,
+    requestPostponed,
+    requestRefused,
+    requestForfeited,
+
+    demandRefused,
+
+    giftReceivedDrachmas,
+    giftReceivedNeeded,
+    giftReceivedSells,
+    giftReceivedNotNeeded,
+    giftReceivedRefuse,
+
+    generalRequestAllyInitial,
+    generalRequestAllyReminder,
+    generalRequestAllyOverdue,
+    generalRequestAllyWarning,
+    generalRequestAllyComply,
+    generalRequestAllyTooLate,
+    generalRequestAllyRefuse,
+
+    generalRequestRivalInitial,
+    generalRequestRivalReminder,
+    generalRequestRivalOverdue,
+    generalRequestRivalWarning,
+    generalRequestRivalComply,
+    generalRequestRivalTooLate,
+    generalRequestRivalRefuse,
+
+    generalRequestSubjectInitial,
+    generalRequestSubjectReminder,
+    generalRequestSubjectOverdue,
+    generalRequestSubjectWarning,
+    generalRequestSubjectComply,
+    generalRequestSubjectTooLate,
+    generalRequestSubjectRefuse,
+
+    generalRequestParentInitial,
+    generalRequestParentReminder,
+    generalRequestParentOverdue,
+    generalRequestParentWarning,
+    generalRequestParentComply,
+    generalRequestParentTooLate,
+    generalRequestParentRefuse,
+
+    famineAllyInitial,
+    famineAllyReminder,
+    famineAllyOverdue,
+    famineAllyWarning,
+    famineAllyComply,
+    famineAllyTooLate,
+    famineAllyRefuse,
+
+    famineRivalInitial,
+    famineRivalReminder,
+    famineRivalOverdue,
+    famineRivalWarning,
+    famineRivalComply,
+    famineRivalTooLate,
+    famineRivalRefuse,
+
+    famineSubjectInitial,
+    famineSubjectReminder,
+    famineSubjectOverdue,
+    famineSubjectWarning,
+    famineSubjectComply,
+    famineSubjectTooLate,
+    famineSubjectRefuse,
+
+    famineParentInitial,
+    famineParentReminder,
+    famineParentOverdue,
+    famineParentWarning,
+    famineParentComply,
+    famineParentTooLate,
+    famineParentRefuse,
+
+    projectAllyInitial,
+    projectAllyReminder,
+    projectAllyOverdue,
+    projectAllyWarning,
+    projectAllyComply,
+    projectAllyTooLate,
+    projectAllyRefuse,
+
+    projectRivalInitial,
+    projectRivalReminder,
+    projectRivalOverdue,
+    projectRivalWarning,
+    projectRivalComply,
+    projectRivalTooLate,
+    projectRivalRefuse,
+
+    projectSubjectInitial,
+    projectSubjectReminder,
+    projectSubjectOverdue,
+    projectSubjectWarning,
+    projectSubjectComply,
+    projectSubjectTooLate,
+    projectSubjectRefuse,
+
+    projectParentInitial,
+    projectParentReminder,
+    projectParentOverdue,
+    projectParentWarning,
+    projectParentComply,
+    projectParentTooLate,
+    projectParentRefuse,
+
+    festivalAllyInitial,
+    festivalAllyReminder,
+    festivalAllyOverdue,
+    festivalAllyWarning,
+    festivalAllyComply,
+    festivalAllyTooLate,
+    festivalAllyRefuse,
+
+    festivalRivalInitial,
+    festivalRivalReminder,
+    festivalRivalOverdue,
+    festivalRivalWarning,
+    festivalRivalComply,
+    festivalRivalTooLate,
+    festivalRivalRefuse,
+
+    festivalSubjectInitial,
+    festivalSubjectReminder,
+    festivalSubjectOverdue,
+    festivalSubjectWarning,
+    festivalSubjectComply,
+    festivalSubjectTooLate,
+    festivalSubjectRefuse,
+
+    festivalParentInitial,
+    festivalParentReminder,
+    festivalParentOverdue,
+    festivalParentWarning,
+    festivalParentComply,
+    festivalParentTooLate,
+    festivalParentRefuse,
+
+    financialWoesAllyInitial,
+    financialWoesAllyReminder,
+    financialWoesAllyOverdue,
+    financialWoesAllyWarning,
+    financialWoesAllyComply,
+    financialWoesAllyTooLate,
+    financialWoesAllyRefuse,
+
+    financialWoesRivalInitial,
+    financialWoesRivalReminder,
+    financialWoesRivalOverdue,
+    financialWoesRivalWarning,
+    financialWoesRivalComply,
+    financialWoesRivalTooLate,
+    financialWoesRivalRefuse,
+
+    financialWoesSubjectInitial,
+    financialWoesSubjectReminder,
+    financialWoesSubjectOverdue,
+    financialWoesSubjectWarning,
+    financialWoesSubjectComply,
+    financialWoesSubjectTooLate,
+    financialWoesSubjectRefuse,
+
+    financialWoesParentInitial,
+    financialWoesParentReminder,
+    financialWoesParentOverdue,
+    financialWoesParentWarning,
+    financialWoesParentComply,
+    financialWoesParentTooLate,
+    financialWoesParentRefuse,
+
+    generalRequestTributeInitial,
+    generalRequestTributeReminder,
+    generalRequestTributeOverdue,
+    generalRequestTributeWarning,
+    generalRequestTributeComply,
+    generalRequestTributeTooLate,
+    generalRequestTributeRefuse,
+
+    giftGranted,
+    giftCashGranted,
+    giftPartialSpace,
+    giftInsufficientSpace,
+    giftLastChance,
+    giftForfeited,
+    giftAccepted,
+    giftCashAccepted,
+    giftPostponed,
+    giftRefused,
+
+    unemployment,
+    employees,
+
+    plague,
+
+    cityConquered,
+    cityConquerFailed,
+
+    raidGranted,
+    raidCashGranted,
+    raidPartialSpace,
+    raidInsufficientSpace,
+    raidLastChance,
+    raidForfeited,
+    raidAccepted,
+    raidCashAccepted,
+    raidPostponed,
+    raidRefused,
+
+    allyAttackedByPlayer,
+
+    cityRaidFailed,
+    armyReturns,
+
+    militaryBuildup,
+    militaryDecline,
+    economicProsperity,
+    economicDecline,
+
+    troopsRequestVassalInitial,
+    troopsRequestVassalFirstReminder,
+    troopsRequestVassalLastReminder,
+    troopsRequestVassalConquered,
+
+    troopsRequestColonyInitial,
+    troopsRequestColonyFirstReminder,
+    troopsRequestColonyLastReminder,
+    troopsRequestColonyConquered,
+
+    troopsRequestParentCityInitial,
+    troopsRequestParentCityFirstReminder,
+    troopsRequestParentCityLastReminder,
+    troopsRequestParentCityConquered,
+
+    troopsRequestAllyInitial,
+    troopsRequestAllyFirstReminder,
+    troopsRequestAllyLastReminder,
+    troopsRequestAllyConquered,
+
+    troopsRequestAttackAverted,
+
+    troopsMonsterRequestVassalInitial,
+    troopsMonsterRequestVassalFirstReminder,
+    troopsMonsterRequestVassalLastReminder,
+    troopsMonsterRequestVassalConquered,
+
+    troopsMonsterRequestColonyInitial,
+    troopsMonsterRequestColonyFirstReminder,
+    troopsMonsterRequestColonyLastReminder,
+    troopsMonsterRequestColonyConquered,
+
+    troopsMonsterRequestParentCityInitial,
+    troopsMonsterRequestParentCityFirstReminder,
+    troopsMonsterRequestParentCityLastReminder,
+    troopsMonsterRequestParentCityConquered,
+
+    troopsMonsterRequestAllyInitial,
+    troopsMonsterRequestAllyFirstReminder,
+    troopsMonsterRequestAllyLastReminder,
+    troopsMonsterRequestAllyConquered,
+
+    troopsMonsterRequestAttackAverted,
+
+    troopsRequestAttackAllyInitial,
+    troopsRequestAttackAllyFirstReminder,
+    troopsRequestAttackAllyLastReminder,
+    allyConqueresRival,
+
+    troopsRequestAttackVassalInitial,
+    troopsRequestAttackVassalFirstReminder,
+    troopsRequestAttackVassalLastReminder,
+    vassalConqueresRival,
+
+    godDisaster,
+    godDisasterEnds,
+    godTradeResumes,
+
+    aidArrives,
+    aidDeparts,
+    aidDefeated,
+
+    strikeDeparture,
+    strikeSuccessful,
+    strikeUnsuccessful,
+
+    rivalArmyAway,
+
+    earthquake,
+    earthquakeGod,
+    tidalWave,
+    tidalWaveGod,
+    lavaFlow,
+    lavaFlowGod,
+    sinkLand,
+    sinkLandGod,
+    landSlide,
+
+    cityBecomesAlly,
+    cityBecomesRival,
+    cityBecomesVassal,
+
+    cityBecomesActive,
+    cityBecomesInactive,
+
+    cityBecomesVisible,
+    cityBecomesInvisible,
+
+    tributeSuspended,
+    tributeResumed,
+
+    cityRebellion,
+    cityRebellionQuelled,
+    cityRebellionOver,
+
+    rivalConqueredByAlly,
+    rivalConqueredByVassal,
+
+    allyConqueredByRival,
+    vassalConqueredByRival,
+    colonyConqueredByRival,
+    parentConqueredByRival,
+
+    colonyRestored,
+
+    debtAnniversary,
+
+    colonyMonument,
+
+    tradeShutdowns,
+    tradeOpensUp,
+
+    supplyIncrease,
+    supplyDecrease,
+    demandIncrease,
+    demandDecrease,
+    priceIncrease,
+    priceDecrease,
+    wageIncrease,
+    wageDecrease,
+
+    areaCutOff
+};
+
+#endif // EEVENT_H

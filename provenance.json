@@ -1,0 +1,82 @@
+{
+  "release": "v0.1.0-alpha.1",
+  "date": "2026-09-19",
+  "upstream": {
+    "repository": "https://github.com/MaurycyLiebner/eZeus",
+    "tag": "0.8.2-beta.4",
+    "commit": "474a96206278293dbd9cde6d506b5570934f8acf"
+  },
+  "emscripten": {
+    "version": "6.0.9",
+    "emsdk_commit": "c59d6e841da55c2c21af32004c4c173cbd1c0f10"
+  },
+  "converter": {
+    "repository": "https://github.com/bvschaik/citybuilding-tools",
+    "commit": "ea749c6e8bfa14ccb2ce5f1565b8f0501124a053"
+  },
+  "base_assets": {
+    "bundled": false,
+    "url": "https://github.com/MaurycyLiebner/eZeus/releases/download/0.8.2-beta/eZeus-0.8.2-beta.zip",
+    "bytes": 338773633,
+    "sha256": "77e46d79edc3cfb7818b6992cd861cb303a1055b72a1be2b0c04f8a91a47c5a3"
+  },
+  "browser_ports": [
+    {
+      "port": "freetype",
+      "source_directory": "freetype-VER-2-14-3"
+    },
+    {
+      "port": "harfbuzz",
+      "source_directory": "harfbuzz-3.2.0"
+    },
+    {
+      "port": "libjpeg",
+      "source_directory": "jpeg-9f"
+    },
+    {
+      "port": "libpng",
+      "source_directory": "libpng-1.6.58"
+    },
+    {
+      "port": "mpg123",
+      "source_directory": "mpg123-1.26.2"
+    },
+    {
+      "port": "ogg",
+      "source_directory": "libogg-1.3.5"
+    },
+    {
+      "port": "sdl2",
+      "source_directory": "SDL-release-2.32.10"
+    },
+    {
+      "port": "sdl2_image",
+      "source_directory": "SDL_image-release-2.6.0"
+    },
+    {
+      "port": "sdl2_mixer",
+      "source_directory": "SDL_mixer-release-2.8.0"
+    },
+    {
+      "port": "sdl2_ttf",
+      "source_directory": "SDL_ttf-release-2.20.2"
+    },
+    {
+      "port": "vorbis",
+      "source_directory": "libvorbis-1.3.7"
+    },
+    {
+      "port": "zlib",
+      "source_directory": "zlib-1.3.2"
+    }
+  ],
+  "reference_environment": {
+    "os": "macOS",
+    "architecture": "x86_64",
+    "browser": "Brave/Chromium 153.1.95.102",
+    "cmake": "4.4.2",
+    "ninja": "1.13.2",
+    "python": "3.14.2",
+    "node": "26.7.0"
+  }
+}

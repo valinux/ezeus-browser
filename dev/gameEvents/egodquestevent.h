@@ -1,0 +1,29 @@
+#ifndef EGODQUESTEVENT_H
+#define EGODQUESTEVENT_H
+
+#include "egodquesteventbase.h"
+
+class eGodQuestEvent : public eGodQuestEventBase {
+public:
+    eGodQuestEvent(const eCityId cid,
+                   const eGameEventBranch branch,
+                   eGameBoard& board);
+    ~eGodQuestEvent();
+
+    void trigger() override;
+    std::string longName() const override;
+    bool finished() const override;
+
+    void read(eReadStream& src) override;
+    void write(eWriteStream& dst) const override;
+
+    void fulfill();
+    void fulfilled();
+
+    eEventTrigger& fulfilledTrigger() { return *mFulfilledTrigger; }
+private:
+    stdsptr<eEventTrigger> mFulfilledTrigger;
+    bool mFulfilled = false;
+};
+
+#endif // EGODQUESTEVENT_H

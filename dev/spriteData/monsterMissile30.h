@@ -1,0 +1,70 @@
+#include <vector>
+
+#include "espritedata.h"
+
+const auto eMonsterMissileSpriteData30 = std::vector<eSpriteData> {
+   eSpriteData{0, 0, 0, 49, 32}, // 1340
+   eSpriteData{0, 49, 0, 57, 27}, // 1341
+   eSpriteData{0, 106, 0, 45, 33}, // 1342
+   eSpriteData{0, 151, 0, 36, 36}, // 1343
+   eSpriteData{-1, 0, 0, 0, 0}, // 1344
+   eSpriteData{-1, 0, 0, 0, 0}, // 1345
+   eSpriteData{-1, 0, 0, 0, 0}, // 1346
+   eSpriteData{0, 187, 0, 28, 41}, // 1347
+   eSpriteData{0, 215, 0, 53, 30}, // 1348
+   eSpriteData{0, 268, 0, 58, 25}, // 1349
+   eSpriteData{0, 326, 0, 44, 36}, // 1350
+   eSpriteData{0, 370, 0, 31, 38}, // 1351
+   eSpriteData{-1, 0, 0, 0, 0}, // 1352
+   eSpriteData{-1, 0, 0, 0, 0}, // 1353
+   eSpriteData{-1, 0, 0, 0, 0}, // 1354
+   eSpriteData{0, 401, 0, 30, 42}, // 1355
+   eSpriteData{0, 431, 0, 47, 31}, // 1356
+   eSpriteData{0, 478, 0, 57, 26}, // 1357
+   eSpriteData{0, 535, 0, 47, 36}, // 1358
+   eSpriteData{0, 582, 0, 29, 34}, // 1359
+   eSpriteData{-1, 0, 0, 0, 0}, // 1360
+   eSpriteData{-1, 0, 0, 0, 0}, // 1361
+   eSpriteData{-1, 0, 0, 0, 0}, // 1362
+   eSpriteData{0, 611, 0, 31, 36}, // 1363
+   eSpriteData{0, 642, 0, 48, 34}, // 1364
+   eSpriteData{0, 690, 0, 57, 28}, // 1365
+   eSpriteData{0, 747, 0, 45, 31}, // 1366
+   eSpriteData{0, 792, 0, 30, 37}, // 1367
+   eSpriteData{-1, 0, 0, 0, 0}, // 1368
+   eSpriteData{-1, 0, 0, 0, 0}, // 1369
+   eSpriteData{-1, 0, 0, 0, 0}, // 1370
+   eSpriteData{0, 822, 0, 30, 36}, // 1371
+   eSpriteData{0, 852, 0, 46, 37}, // 1372
+   eSpriteData{0, 898, 0, 56, 27}, // 1373
+   eSpriteData{0, 954, 0, 45, 33}, // 1374
+   eSpriteData{0, 999, 0, 29, 40}, // 1375
+   eSpriteData{-1, 0, 0, 0, 0}, // 1376
+   eSpriteData{-1, 0, 0, 0, 0}, // 1377
+   eSpriteData{-1, 0, 0, 0, 0}, // 1378
+   eSpriteData{0, 1028, 0, 28, 34}, // 1379
+   eSpriteData{0, 1056, 0, 49, 38}, // 1380
+   eSpriteData{0, 1105, 0, 57, 28}, // 1381
+   eSpriteData{0, 1162, 0, 48, 33}, // 1382
+   eSpriteData{0, 1210, 0, 29, 43}, // 1383
+   eSpriteData{-1, 0, 0, 0, 0}, // 1384
+   eSpriteData{-1, 0, 0, 0, 0}, // 1385
+   eSpriteData{-1, 0, 0, 0, 0}, // 1386
+   eSpriteData{0, 1239, 0, 28, 35}, // 1387
+   eSpriteData{0, 1267, 0, 43, 29}, // 1388
+   eSpriteData{0, 1310, 0, 58, 27}, // 1389
+   eSpriteData{0, 1368, 0, 49, 34}, // 1390
+   eSpriteData{0, 1417, 0, 29, 44}, // 1391
+   eSpriteData{-1, 0, 0, 0, 0}, // 1392
+   eSpriteData{-1, 0, 0, 0, 0}, // 1393
+   eSpriteData{-1, 0, 0, 0, 0}, // 1394
+   eSpriteData{0, 1446, 0, 27, 36}, // 1395
+   eSpriteData{0, 1473, 0, 51, 32}, // 1396
+   eSpriteData{0, 1524, 0, 53, 28}, // 1397
+   eSpriteData{0, 1577, 0, 43, 32}, // 1398
+   eSpriteData{0, 1620, 0, 30, 40}, // 1399
+   eSpriteData{-1, 0, 0, 0, 0}, // 1400
+   eSpriteData{-1, 0, 0, 0, 0}, // 1401
+   eSpriteData{-1, 0, 0, 0, 0}, // 1402
+   eSpriteData{0, 1650, 0, 32, 38}, // 1403
+};

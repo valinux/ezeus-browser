@@ -1,0 +1,51 @@
+id,milestone,priority,status,depends_on,deliverable,acceptance
+M0-01,M0,P0,complete,,Separate development checkout and pinned build inputs,Reference source remains clean and build inputs are recorded
+M0-02,M0,P0,complete,M0-01,Asset manifest and converted text,Required files are identified and converted XML displays correctly
+M0-03,M0,P0,in_progress,M0-01;M0-02,Native build and reference runtime,A real city loads advances and saves then reloads
+M0-04,M0,P0,in_progress,M0-03,Greek Atlantean and stress fixtures,Expected state and reference hardware measurements are recorded
+M0-05,M0,P1,planned,M0-02,Asset provisioning and distribution record,Local onboarding path and public-release prerequisites are documented
+M1-01,M1,P0,complete,M0-03,Emscripten target and dependency build,Engine and required SDL components compile for the browser
+M1-02,M1,P0,planned,M0-04,Engine lifecycle and simulation-step boundary,Native behavior remains working without requiring paint to advance a test simulation
+M1-03,M1,P0,in_progress,M1-01;M1-02,Browser loop and task scheduling,Input and rendering remain responsive while simulation tasks run
+M1-04,M1,P0,in_progress,M1-01;M0-02,Browser asset loader,Real game assets load with missing-file diagnostics and measured memory
+M1-05,M1,P0,in_progress,M1-03;M1-04,Browser persistent saves and compatibility audit,City state survives page restart and documented compatible round trips
+M1-06,M1,P0,planned,M1-05;M0-04,Port feasibility report,Thirty-minute run and browser measurements justify a proceed or reassess decision
+M1-07,M1,P1,planned,M1-02,Early headless simulation smoke test,Report can advance a fixture without graphics or identifies concrete remaining dependencies
+M2-01,M2,P1,planned,M1-06;M0-05,Full-page game client and asset onboarding,Game fills the page without surrounding website content; fresh user can supply assets and start or resume a city
+M2-02,M2,P1,planned,M2-01,Local save slots autosave and export import,Previous good save is retained and acknowledged saves survive reload
+M2-03,M2,P1,planned,M2-01;M0-04,Gameplay parity coverage,Both civilizations and representative services production and events are exercised
+M2-04,M2,P1,planned,M2-02;M2-03,Browser support and single-player acceptance,Supported browsers pass recovery and measured performance budgets
+M3-01,M3,P1,planned,M2-04,Accounts sessions and personal city dashboard,Users can sign in recover access and select only their own cities
+M3-02,M3,P1,planned,M3-01,Versioned cloud save API and storage,Each durable save has owner revision version metadata and checksum
+M3-03,M3,P1,planned,M3-02,Device conflict and network retry handling,Stale uploads and simultaneous writers preserve recoverable versions
+M3-04,M3,P1,planned,M3-03,Save backups and cross-device acceptance,Two-account isolation device handoff and backup restore pass
+M3-05,M3,P1,planned,M3-02,Private HTTPS staging and basic monitoring,Account and save service is remotely usable with errors observable
+M4-01,M4,P1,planned,M1-06,eZeus rule profile and blueprint recalculation,Appeal service counts and footprint rules match the pinned engine
+M4-02,M4,P1,planned,M4-01,Compact city candidate comparison,Total support land population employment and external supply are reported
+M4-03,M4,P1,planned,M4-02,HTML PDF image and coordinate exports,Each output labels engine version dimensions and build sequence
+M4-04,M4,P2,planned,M4-01;M1-02,Placement preview and private sandbox importer,Terrain costs availability and building registrations validate with rollback or backup
+M4-05,M4,P1,planned,M4-02;M2-03,In-engine service and stability validation,Both civilizations meet the declared full-year housing stability gate without service cheats
+M4-06,M4,P1,planned,M4-03;M4-05,Validated city design report,Best tested layout includes evidence limits and all required supporting systems
+M5-01,M5,P1,planned,M1-07;M3-01,Headless authoritative simulation worker,Worker loads a template applies commands advances time and snapshots state
+M5-02,M5,P1,planned,M5-01,Global identity world schema and engine-local mapping,Accounts cities worlds and workers have unambiguous ownership and routing
+M5-03,M5,P1,planned,M5-01;M5-02,Versioned authenticated command protocol,Unauthorized duplicate stale and impossible commands are rejected
+M5-04,M5,P1,planned,M5-02,Online clock and offline progression policy,Pause speed disconnect and time advancement have explicit server rules
+M5-05,M5,P1,planned,M5-03;M5-04,Snapshots recovery and worker ownership,Restart resumes committed state and prevents duplicate city owners
+M5-06,M5,P1,planned,M5-05,Transactional city and world inventory handoff,Crashes and retries cannot create duplicate transfers or lose committed resources
+M5-07,M5,P1,planned,M5-05;M2-04,Browser online snapshots and resynchronization,Client reconnects to authoritative state without trusting uploaded saves
+M5-08,M5,P1,planned,M5-06;M5-07,Authority and worker cost acceptance,Recovery command validation and measured simulation cost are documented
+M6-01,M6,P2,planned,M5-08,Small persistent world and city founding,Two accounts own separate server-issued cities on the same world
+M6-02,M6,P2,planned,M6-01;M3-05,Secure live world connections,Authenticated clients receive updates and recover after connection loss
+M6-03,M6,P2,planned,M6-01;M5-06,Complete trade workflow,Offers reservations acceptance cancellation and expiry preserve inventories
+M6-04,M6,P2,planned,M6-02;M6-03,Two-player multiplayer acceptance,Trade races duplicate requests disconnections and server restart preserve the same committed result
+M7-01,M7,P3,planned,M6-04,Larger world model and identifier audit,Regions routes and additional cities work beyond current preset assumptions
+M7-02,M7,P3,planned,M7-01,Measured capacity tiers and world subscriptions,Only relevant world data is sent and a tested scale is documented
+M7-03,M7,P3,planned,M6-04,Alliances diplomacy and aid,Ownership membership and resource transfers remain consistent through recovery
+M7-04,M7,P3,planned,M7-03,World events and travel scheduling,Timed events survive restarts and execute committed effects once
+M7-05,M7,P3,planned,M7-02;M7-04,Optional server-resolved conflict prototype,Combat and offline protection rules are agreed and tested before PvP release
+M8-01,M8,P1,planned,M3-05,Versioned deployment and release manifests,Web Wasm API and data versions deploy reproducibly
+M8-02,M8,P1,planned,M8-01;M3-04,Save migration and rollback rehearsal,Old saves are preserved and compatible upgrade or rollback is demonstrated
+M8-03,M8,P2,planned,M6-04;M8-01,World operations monitoring and restoration,World recovery backup restore and reconnect are rehearsed in staging
+M8-04,M8,P2,planned,M8-03,Load test and hosting budget,Declared concurrency meets measured simulation latency memory and cost budgets
+M8-05,M8,P2,planned,M0-05;M8-02;M8-04,Release onboarding asset provision and source notices,Distribution inputs and user recovery documentation are ready for the intended audience
+M8-06,M8,P2,planned,M8-05,Hosted beta acceptance,Chosen release scope passes its milestone gates with linked evidence

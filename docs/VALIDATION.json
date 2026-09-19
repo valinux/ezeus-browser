@@ -1,0 +1,28 @@
+{
+  "release": "v0.1.0-alpha.1",
+  "date": "2026-09-19",
+  "python_tests": 9,
+  "blueprint_geometry_cases": 6,
+  "fresh_asset_setup": {
+    "inventoried_files": 2050,
+    "browser_files": 1818,
+    "browser_bytes": 511200873
+  },
+  "packaged_engine": {
+    "wasm_compile": "passed",
+    "automatic_startup_rounds": 2,
+    "startup_errors": [
+      [],
+      []
+    ],
+    "streaming_progress": true,
+    "viewport_resize": "passed",
+    "hidden_startup": "passed",
+    "note": "C++ source is identical to the previously tested engine; packaging changes eight diagnostic path strings only. A full C++ rebuild was not repeated."
+  },
+  "limits": [
+    "No full campaign/endurance test",
+    "No complete city save/reload acceptance",
+    "Desktop Chromium on macOS only"
+  ]
+}

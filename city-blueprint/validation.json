@@ -1,0 +1,268 @@
+{
+  "checks": "Footprint bounds, overlaps, reserved boulevard verges, road graph, frontage, conservative provider-to-home distance for every possible touching entry tile, 5 difficulty models. Not an in-game test.",
+  "plans": [
+    {
+      "civilization": "poseidon",
+      "plan": "elite",
+      "dimensions": [
+        43,
+        21
+      ],
+      "jobs": 136,
+      "buildings": 137,
+      "coverage": [
+        {
+          "provider": "museum",
+          "worst_distance": 23,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "observatory",
+          "worst_distance": 22,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "library",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "lab",
+          "worst_distance": 21,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "tax",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "maintenance",
+          "worst_distance": 17,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "clinic",
+          "worst_distance": 19,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "watch",
+          "worst_distance": 21,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "agora",
+          "worst_distance": 27,
+          "reference_roaming_range": 44
+        }
+      ],
+      "errors": [],
+      "status": "pass"
+    },
+    {
+      "civilization": "poseidon",
+      "plan": "workers",
+      "dimensions": [
+        38,
+        14
+      ],
+      "jobs": 78,
+      "buildings": 145,
+      "coverage": [
+        {
+          "provider": "observatory",
+          "worst_distance": 22,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "library",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "lab",
+          "worst_distance": 18,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "clinic",
+          "worst_distance": 20,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "fountain",
+          "worst_distance": 16,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "maintenance",
+          "worst_distance": 22,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "tax",
+          "worst_distance": 16,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "watch",
+          "worst_distance": 18,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "agora",
+          "worst_distance": 24,
+          "reference_roaming_range": 44
+        }
+      ],
+      "errors": [],
+      "status": "pass"
+    },
+    {
+      "civilization": "poseidon",
+      "plan": "support",
+      "dimensions": [
+        33,
+        16
+      ],
+      "jobs": 106,
+      "buildings": 11,
+      "coverage": [],
+      "errors": [],
+      "status": "pass"
+    },
+    {
+      "civilization": "zeus",
+      "plan": "elite",
+      "dimensions": [
+        43,
+        21
+      ],
+      "jobs": 128,
+      "buildings": 137,
+      "coverage": [
+        {
+          "provider": "stadium",
+          "worst_distance": 23,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "theater",
+          "worst_distance": 22,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "podium",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "gym",
+          "worst_distance": 20,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "tax",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "maintenance",
+          "worst_distance": 17,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "clinic",
+          "worst_distance": 19,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "watch",
+          "worst_distance": 21,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "agora",
+          "worst_distance": 27,
+          "reference_roaming_range": 44
+        }
+      ],
+      "errors": [],
+      "status": "pass"
+    },
+    {
+      "civilization": "zeus",
+      "plan": "workers",
+      "dimensions": [
+        38,
+        14
+      ],
+      "jobs": 75,
+      "buildings": 145,
+      "coverage": [
+        {
+          "provider": "theater",
+          "worst_distance": 22,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "podium",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "gym",
+          "worst_distance": 17,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "clinic",
+          "worst_distance": 20,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "fountain",
+          "worst_distance": 16,
+          "reference_roaming_range": 27
+        },
+        {
+          "provider": "maintenance",
+          "worst_distance": 22,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "tax",
+          "worst_distance": 16,
+          "reference_roaming_range": 35
+        },
+        {
+          "provider": "watch",
+          "worst_distance": 18,
+          "reference_roaming_range": 44
+        },
+        {
+          "provider": "agora",
+          "worst_distance": 24,
+          "reference_roaming_range": 44
+        }
+      ],
+      "errors": [],
+      "status": "pass"
+    },
+    {
+      "civilization": "zeus",
+      "plan": "support",
+      "dimensions": [
+        33,
+        16
+      ],
+      "jobs": 102,
+      "buildings": 11,
+      "coverage": [],
+      "errors": [],
+      "status": "pass"
+    }
+  ],
+  "status": "pass"
+}

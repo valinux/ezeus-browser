@@ -1,0 +1,802 @@
+#include "eenlistforcesdialog.h"
+
+#include "eframedbutton.h"
+#include "elanguage.h"
+#include "evectorhelpers.h"
+#include "escrollwidget.h"
+#include "emainwindow.h"
+#include "echoosebutton.h"
+#include "eframedlabel.h"
+#include "eswitchbutton.h"
+
+enum class eEnlistType {
+    horseman, hoplite, navy,
+    hero,
+    amazon, aresWarrior,
+    ally
+};
+
+class eEnlistButton : public eButtonBase {
+public:
+    using eButtonBase::eButtonBase;
+
+    void initialize(const bool abroad,
+                    const eEnlistType type,
+                    const int id,
+                    const std::string& title,
+                    const int troops,
+                    const eAction& pressAction) {
+        mAbroad = abroad;
+        mType = type;
+        setNoPadding();
+        if(!abroad) {
+            setPressAction([this, pressAction]() {
+                const bool s = mSelected;
+                if(pressAction) pressAction();
+                setSelected(!s);
+            });
+        }
+
+        int iRes;
+        int mult;
+        iResAndMult(iRes, mult);
+        const auto& intrfc = eGameTextures::interface();
+        const auto& coll = intrfc[iRes];
+
+        if(type == eEnlistType::horseman ||
+           type == eEnlistType::hoplite) {
+            const auto& bnrs = coll.fInterfaceBanners;
+            const auto& bnr = bnrs.getTexture(id % bnrs.size());
+            const auto bnrl = new eLabel(window());
+            bnrl->setTexture(bnr);
+            bnrl->setNoPadding();
+            bnrl->fitContent();
+            addWidget(bnrl);
+        }
+        {
+            const auto& tops = coll.fInterfaceBannerTops;
+            bool valid = false;
+            int topId = 0;
+            switch(type) {
+            case eEnlistType::horseman:
+                topId = 0;
+                valid = true;
+                break;
+            case eEnlistType::hoplite:
+                topId = 1;
+                valid = true;
+                break;
+            case eEnlistType::amazon:
+                topId = 4;
+                valid = true;
+                break;
+            case eEnlistType::aresWarrior:
+                topId = 5;
+                valid = true;
+                break;
+            default:
+                topId = 0;
+                valid = false;
+                break;
+            }
+
+            const auto& top = tops.getTexture(topId);
+            const auto bnrl = new eLabel(window());
+            bnrl->setTexture(top);
+            bnrl->setNoPadding();
+            bnrl->fitContent();
+            addWidget(bnrl);
+            bnrl->setVisible(valid);
+        }
+        const auto titlel = new eLabel(window());
+        titlel->setTinyFontSize();
+        titlel->setNoPadding();
+        titlel->setText(title);
+        titlel->fitContent();
+        addWidget(titlel);
+        mLabels.push_back(titlel);
+
+        fitHeight();
+        stackHorizontally();
+
+        if(troops != -1) {
+            const auto troopsl = new eLabel(window());
+            troopsl->setTinyFontSize();
+            troopsl->setNoPadding();
+            const auto troopsStr = std::to_string(troops);
+            troopsl->setText(troopsStr);
+            troopsl->fitContent();
+            addWidget(troopsl);
+            const int x = 2*width()/3 + 4*mult - troopsl->width()/2;
+            troopsl->setX(x);
+
+            mLabels.push_back(troopsl);
+        }
+
+        mEnlistedLabel = new eLabel(window());
+        mEnlistedLabel->setYellowFontColor();
+        mEnlistedLabel->setNoPadding();
+        mEnlistedLabel->setTinyFontSize();
+        if(abroad) {
+            const auto etxt = eLanguage::zeusText(283, 16);
+            mEnlistedLabel->setText(etxt);
+        } else {
+            const auto etxt = eLanguage::zeusText(283, 13);
+            mEnlistedLabel->setText(etxt);
+        }
+        mEnlistedLabel->fitContent();
+        addWidget(mEnlistedLabel);
+        mEnlistedLabel->setX(width() - mEnlistedLabel->width() - mult*5);
+
+        setSelected(abroad);
+    }
+
+    eEnlistType type() const { return mType; }
+
+    void setSelected(const bool b) {
+        mSelected = b;
+        for(const auto l : mLabels) {
+            if(b) l->setYellowFontColor();
+            else l->setLightFontColor();
+        }
+        mEnlistedLabel->setVisible(b);
+    }
+
+    bool selected() const { return mSelected; }
+    bool abroad() const { return mAbroad; }
+protected:
+    void paintEvent(ePainter& p) {
+        if(!mAbroad && hovered()) {
+            p.drawRect(rect(), {0, 0, 0, 255}, 1);
+        }
+        eButtonBase::paintEvent(p);
+    }
+private:
+    bool mAbroad = false;
+    bool mSelected = false;
+    eEnlistType mType;
+
+    std::vector<eLabel*> mLabels;
+    eLabel* mEnlistedLabel = nullptr;
+};
+
+class eEnlistArea : public eWidget {
+public:
+    using eWidget::eWidget;
+
+    struct eEnlistData {
+        bool fAbroad;
+        eEnlistType fType;
+        int fId;
+        std::string fTitle;
+        int fTroops;
+        eAction fAction;
+    };
+
+    void initialize(const eEnlistedForces& e,
+                    const std::vector<eHeroType>& heroesAbroad,
+                    const eAction& selectionChanged) {
+        mAll = e;
+        std::vector<eEnlistData> data;
+        for(const auto& s : e.fSoldiers) {
+            auto& d = data.emplace_back();
+            switch(s->type()) {
+            case eBannerType::hoplite:
+                d.fType = eEnlistType::hoplite;
+                break;
+            case eBannerType::horseman:
+                d.fType = eEnlistType::horseman;
+                break;
+            case eBannerType::amazon:
+                d.fType = eEnlistType::amazon;
+                break;
+            case eBannerType::aresWarrior:
+                d.fType = eEnlistType::aresWarrior;
+                break;
+            default:
+                continue;
+                break;
+            }
+            d.fAbroad = s->isAbroad();
+            d.fTitle = s->name();
+            d.fId = s->id();
+            d.fTroops = s->count();
+            d.fAction = [this, s, selectionChanged]() {
+                const bool selected = eVectorHelpers::contains(
+                                          mSelected.fSoldiers, s);
+                if(selected) {
+                    eVectorHelpers::remove(mSelected.fSoldiers, s);
+                } else {
+                    mSelected.fSoldiers.push_back(s);
+                }
+                selectionChanged();
+            };
+        }
+
+        const int iMax = e.fHeroes.size();
+        for(int i = 0; i < iMax; i++) {
+            const auto h = e.fHeroes[i];
+            auto& d = data.emplace_back();
+            d.fAbroad = eVectorHelpers::contains(heroesAbroad, h.second);
+            d.fType = eEnlistType::hero;
+            d.fTitle = eHero::sHeroName(h.second);
+            d.fId = static_cast<int>(h.second);
+            d.fTroops = -1;
+            d.fAction = [this, h, selectionChanged]() {
+                const bool selected = eVectorHelpers::contains(
+                                          mSelected.fHeroes, h);
+                if(selected) {
+                    eVectorHelpers::remove(mSelected.fHeroes, h);
+                } else {
+                    mSelected.fHeroes.push_back(h);
+                }
+                selectionChanged();
+            };
+        }
+
+        for(const auto& a : e.fAllies) {
+            auto& d = data.emplace_back();
+            d.fAbroad = a->abroad();
+            d.fType = eEnlistType::ally;
+            d.fTitle = a->name();
+            d.fId = -1;
+            d.fTroops = -1;
+            d.fAction = [this, a, selectionChanged]() {
+                const bool selected = eVectorHelpers::contains(
+                                          mSelected.fAllies, a);
+                if(selected) {
+                    eVectorHelpers::remove(mSelected.fAllies, a);
+                } else {
+                    clearCities();
+                    mSelected.fAllies.push_back(a);
+                }
+                selectionChanged();
+            };
+        }
+
+        for(const auto& d : data) {
+            const auto b = new eEnlistButton(window());
+            b->setWidth(width());
+            b->initialize(d.fAbroad, d.fType, d.fId,
+                          d.fTitle, d.fTroops, d.fAction);
+            addWidget(b);
+            mButtons.push_back(b);
+        }
+        stackVertically();
+    }
+
+    void clearCities() {
+        mSelected.fAllies.clear();
+        for(const auto b : mButtons) {
+            const auto t = b->type();
+            if(t != eEnlistType::ally) continue;
+            const bool abroad = b->abroad();
+            if(!abroad) b->setSelected(false);
+        }
+    }
+
+    void clearAll() {
+        mSelected.clear();
+        for(const auto b : mButtons) {
+            const bool abroad = b->abroad();
+            if(!abroad) b->setSelected(false);
+        }
+    }
+
+    void selectAll() {
+        mSelected = mAll;
+        auto& allies = mSelected.fAllies;
+        if(!allies.empty()) {
+            allies.clear();
+            for(const auto& a : mAll.fAllies) {
+                const bool abroad = a->abroad();
+                if(abroad) continue;
+                allies.push_back(a);
+                break;
+            }
+        }
+        bool citySelected = false;
+        for(const auto b : mButtons) {
+            const auto t = b->type();
+            const bool isAlly = t == eEnlistType::ally;
+            const bool isAbroad = b->abroad();
+            if(isAlly && !isAbroad) {
+                if(citySelected) {
+                    b->setSelected(false);
+                    continue;
+                }
+                citySelected = true;
+            }
+
+            b->setSelected(true);
+        }
+    }
+
+    const eEnlistedForces& selected() const {
+        return mSelected;
+    }
+private:
+    eEnlistedForces mAll;
+    eEnlistedForces mSelected;
+    std::vector<eEnlistButton*> mButtons;
+};
+
+eEnlistedForces extractCity(const eCityId cid,
+                            const eEnlistedForces& from) {
+    eEnlistedForces result;
+    for(const auto& s : from.fSoldiers) {
+        const auto t = s->cityId();
+        if(t == cid) {
+            result.fSoldiers.push_back(s);
+        }
+    }
+    for(const auto& h : from.fHeroes) {
+        if(h.first == cid) {
+            result.fHeroes.push_back(h);
+        }
+    }
+    result.fAllies = from.fAllies;
+    if(from.fAres && from.fAresCity == cid) {
+        result.fAres = true;
+        result.fAresCity = cid;
+    }
+    return result;
+}
+
+eEnlistedForces extractType(const eBannerType type,
+                            const eEnlistedForces& from) {
+    eEnlistedForces result;
+    for(const auto& s : from.fSoldiers) {
+        const auto t = s->type();
+        if(t == type) {
+            result.fSoldiers.push_back(s);
+        }
+    }
+    return result;
+}
+
+class eEnlistWidget : public eFramedWidget {
+public:
+    using eFramedWidget::eFramedWidget;
+
+    void initialize(const eEnlistedForces& e,
+                    const std::vector<eCityId>& cids,
+                    const std::vector<eHeroType>& heroesAbroad,
+                    const eAction& selectionChanged,
+                    const std::string& title,
+                    const bool troops) {
+        const auto r = resolution();
+
+        setType(eFrameType::inner);
+        const int w = width();
+        const int h = height();
+
+        const auto innerWid = new eWidget(window());
+        addWidget(innerWid);
+        const int p = r.tinyPadding();
+        innerWid->setNoPadding();
+        innerWid->move(p, p);
+        innerWid->resize(w - 2*p, h - 2*p);
+
+        const auto titleLabel = new eLabel(title, window());
+        titleLabel->setTinyFontSize();
+        titleLabel->setNoPadding();
+        titleLabel->fitContent();
+        innerWid->addWidget(titleLabel);
+        titleLabel->align(eAlignment::top | eAlignment::left);
+
+        if(troops) {
+            const auto text = eLanguage::zeusText(283, 11);
+            const auto troopsLabel = new eLabel(text, window());
+            troopsLabel->setTinyFontSize();
+            troopsLabel->setNoPadding();
+            troopsLabel->fitContent();
+            innerWid->addWidget(troopsLabel);
+            troopsLabel->align(eAlignment::top | eAlignment::right);
+            troopsLabel->setX(11*width()/18);
+        }
+
+        for(const auto cid : cids) {
+            const auto area = new eEnlistArea(window());
+            mAreas[cid] = area;
+            const int ww = innerWid->width();
+            const int hh = innerWid->height() - titleLabel->height();
+            area->resize(ww, hh);
+            const auto ce = extractCity(cid, e);
+            area->initialize(ce, heroesAbroad, selectionChanged);
+            area->fitHeight();
+            if(!mScrollW) {
+                mScrollW = new eScrollWidget(window());
+                mScrollW->resize(ww, hh);
+                innerWid->addWidget(mScrollW);
+                mScrollW->align(eAlignment::bottom | eAlignment::hcenter);
+                setCurrentCity(cid);
+            }
+        }
+    }
+
+    void clearAll() {
+        mArea->clearAll();
+    }
+
+    void selectAll() {
+        mArea->selectAll();
+    }
+
+    const eEnlistedForces& currentSelected() const {
+        return mArea->selected();
+    }
+
+    eEnlistedForces allSelected() const {
+        eEnlistedForces result;
+        for(const auto& a : mAreas) {
+            const auto& s = a.second->selected();
+            result.add(s);
+        }
+        return result;
+    }
+
+    void setCurrentCity(const eCityId cid) {
+        mArea = mAreas[cid];
+        mScrollW->setScrollArea(mArea);
+    }
+private:
+    eScrollWidget* mScrollW = nullptr;
+
+    eEnlistArea* mArea = nullptr;
+    std::map<eCityId, eEnlistArea*> mAreas;
+};
+
+void eEnlistForcesDialog::initialize(
+        const eEnlistedForces& enlistable,
+        const std::vector<eCityId>& cids,
+        const std::vector<std::string>& cnames,
+        const std::vector<eHeroType>& heroesAbroad,
+        const eEnlistAction& action,
+        const std::vector<eResourceType>& plunderResources) {
+    const auto r = resolution();
+
+    setType(eFrameType::message);
+    const int w = r.centralWidgetLargeWidth();
+    const int h = r.centralWidgetLargeHeight();
+    resize(w, h);
+    align(eAlignment::center);
+
+    const auto innerWid = new eWidget(window());
+    addWidget(innerWid);
+    const int p = r.hugePadding();
+    innerWid->setNoPadding();
+    innerWid->move(p, p);
+    const int ww = w - 2*p;
+    const int hh = h - 2*p;
+    innerWid->resize(ww, hh);
+
+    const int pp = r.tinyPadding();
+
+    int hhh = hh;
+
+    eSwitchButton* cButton = nullptr;
+    {
+        const auto titleW = new eWidget(window());
+        titleW->setNoPadding();
+        titleW->setWidth(innerWid->width());
+
+        int cw = p;
+        if(cnames.size() > 1) {
+            cButton = new eSwitchButton(window());
+            cButton->setUnderline(false);
+            for(const auto& cn : cnames) {
+                cButton->addValue(cn);
+            }
+            cButton->fitValidContent();
+            titleW->addWidget(cButton);
+            cw = cButton->width() + p;
+        }
+
+        innerWid->addWidget(titleW);
+
+        {
+            const auto text = eLanguage::zeusText(283, 0);
+            const auto titleLabel = new eLabel(window());
+            titleLabel->setTinyPadding();
+            titleLabel->setText(text);
+            titleLabel->fitContent();
+            titleW->addWidget(titleLabel);
+            if(plunderResources.empty()) {
+                titleLabel->align(eAlignment::top | eAlignment::hcenter);
+            } else {
+                titleLabel->align(eAlignment::top | eAlignment::left);
+                titleLabel->setX(cw);
+            }
+        }
+
+        if(!plunderResources.empty()) {
+            const auto plunderW = new eWidget(window());
+            plunderW->setNoPadding();
+            titleW->addWidget(plunderW);
+
+            const auto text = eLanguage::zeusText(283, 22);
+            const auto titleLabel = new eLabel(window());
+            titleLabel->setSmallFontSize();
+            titleLabel->setSmallPadding();
+            titleLabel->setText(text);
+            titleLabel->fitContent();
+            plunderW->addWidget(titleLabel);
+
+            const auto button = new eFramedButton(window());
+            button->setUnderline(false);
+            button->setSmallPadding();
+            button->setSmallFontSize();
+            button->setText(eLanguage::zeusText(283, 23));
+            button->fitContent();
+            button->setWidth(titleLabel->width());
+            plunderW->addWidget(button);
+
+            button->setPressAction([this, button, plunderResources]() {
+                const auto choose = new eChooseButton(window());
+                std::vector<std::string> names;
+                for(const auto r : plunderResources) {
+                    const auto name = r == eResourceType::none ?
+                                          eLanguage::zeusText(283, 23) :
+                                          eResourceTypeHelpers::typeName(r);
+                    names.push_back(name);
+                }
+                const auto act = [this, button, plunderResources, names](const int val) {
+                    const auto r = plunderResources[val];
+                    button->setText(names[val]);
+                    mSelectedPlunder = r;
+                };
+                choose->initialize(8, names, act);
+
+                window()->execDialog(choose);
+                choose->align(eAlignment::center);
+            });
+
+            plunderW->stackHorizontally();
+            plunderW->fitContent();
+            plunderW->align(eAlignment::right);
+
+            titleLabel->align(eAlignment::vcenter);
+            button->align(eAlignment::vcenter);
+        }
+
+        titleW->fitHeight();
+        hhh -= titleW->height();
+    }
+
+    const auto horsemen = new eEnlistWidget(window());
+    const auto hoplite = new eEnlistWidget(window());
+    const auto navy = new eEnlistWidget(window());
+    const auto heroes = new eEnlistWidget(window());
+    const auto mythical = new eEnlistWidget(window());
+    const auto allies = new eEnlistWidget(window());
+
+    const auto selectionChanged = [this,
+                                   horsemen,
+                                   hoplite,
+                                   navy,
+                                   heroes,
+                                   mythical,
+                                   allies]() {
+        mSelected.clear();
+        mSelected.add(horsemen->allSelected());
+        mSelected.add(hoplite->allSelected());
+        mSelected.add(navy->allSelected());
+        mSelected.add(heroes->allSelected());
+        mSelected.add(mythical->allSelected());
+        mSelected.add(allies->allSelected());
+    };
+
+    if(cButton) cButton->setSwitchAction([cids, horsemen, hoplite, navy,
+                                          heroes, mythical](const int id) {
+        const auto cid = cids[id];
+        horsemen->setCurrentCity(cid);
+        hoplite->setCurrentCity(cid);
+        navy->setCurrentCity(cid);
+        heroes->setCurrentCity(cid);
+        mythical->setCurrentCity(cid);
+    });
+
+    const auto buttonsWid = new eWidget(window());
+    {
+        const auto cancelButt = new eFramedButton(window());
+        cancelButt->setTinyFontSize();
+        cancelButt->setUnderline(false);
+        cancelButt->setText(eLanguage::zeusText(283, 18));
+        cancelButt->fitContent();
+        const auto cancelAct = [this]() {
+            deleteLater();
+        };
+        cancelButt->setPressAction(cancelAct);
+        buttonsWid->addWidget(cancelButt);
+
+        const auto enlistAllButt = new eFramedButton(window());
+        enlistAllButt->setTinyFontSize();
+        enlistAllButt->setUnderline(false);
+        enlistAllButt->setText(eLanguage::zeusText(283, 19));
+        enlistAllButt->fitContent();
+        const auto enlistAllAct = [enlistable,
+                                   horsemen,
+                                   hoplite,
+                                   navy,
+                                   heroes,
+                                   mythical,
+                                   allies,
+                                   selectionChanged]() {
+            horsemen->selectAll();
+            hoplite->selectAll();
+            navy->selectAll();
+            heroes->selectAll();
+            mythical->selectAll();
+            allies->selectAll();
+            selectionChanged();
+        };
+        enlistAllButt->setPressAction(enlistAllAct);
+        buttonsWid->addWidget(enlistAllButt);
+
+        const auto clearAllButt = new eFramedButton(window());
+        clearAllButt->setTinyFontSize();
+        clearAllButt->setUnderline(false);
+        clearAllButt->setText(eLanguage::zeusText(283, 20));
+        clearAllButt->fitContent();
+        const auto clearAllAct = [horsemen,
+                                  hoplite,
+                                  navy,
+                                  heroes,
+                                  mythical,
+                                  allies,
+                                  selectionChanged]() {
+            horsemen->clearAll();
+            hoplite->clearAll();
+            navy->clearAll();
+            heroes->clearAll();
+            mythical->clearAll();
+            allies->clearAll();
+            selectionChanged();
+        };
+        clearAllButt->setPressAction(clearAllAct);
+        buttonsWid->addWidget(clearAllButt);
+
+        const auto dispatchButt = new eFramedButton(window());
+        dispatchButt->setTinyFontSize();
+        dispatchButt->setUnderline(false);
+        dispatchButt->setText(eLanguage::zeusText(283, 21));
+        dispatchButt->fitContent();
+        const auto dispatchAct = [this, action]() {
+            if(mSelected.fHeroes.empty() && mSelected.fSoldiers.empty()) {
+                const auto msgb = new eFramedLabel(window());
+                msgb->setType(eFrameType::message);
+                msgb->setWrapWidth(width()/2);
+                msgb->setSmallFontSize();
+                msgb->setText(eLanguage::zeusText(5, 13));
+                msgb->fitContent();
+                const int p = msgb->padding();
+                addWidget(msgb);
+                msgb->resize(msgb->width() + 2*p, msgb->height() + 2*p);
+                msgb->align(eAlignment::center);
+                eTip etip;
+                etip.fWid = msgb;
+                etip.fLastFrame = mFrame + 100;
+                mTips.push_back(etip);
+                updateTipPositions();
+            } else {
+                if(action) action(mSelected, mSelectedPlunder);
+                deleteLater();
+            }
+        };
+        dispatchButt->setPressAction(dispatchAct);
+        buttonsWid->addWidget(dispatchButt);
+
+        buttonsWid->setNoPadding();
+        buttonsWid->fitContent();
+        buttonsWid->setWidth(innerWid->width());
+        buttonsWid->layoutHorizontallyWithoutSpaces();
+        hhh -= buttonsWid->height();
+    }
+
+    hhh -= 2*pp;
+
+    {
+        const auto selWid = new eWidget(window());
+        innerWid->addWidget(selWid);
+        selWid->resize(ww, hhh);
+
+        {
+            const auto col1 = new eWidget(window());
+            const int www = ww/2 - pp;
+            col1->resize(www, hhh);
+            selWid->addWidget(col1);
+
+            const int hhhh = hhh/2 - pp;
+
+            horsemen->resize(www, hhhh);
+            const auto hef = extractType(eBannerType::horseman, enlistable);
+            horsemen->initialize(hef, cids, {}, selectionChanged,
+                                 eLanguage::zeusText(283, 7), true);
+            col1->addWidget(horsemen);
+
+            hoplite->resize(www, hhhh);
+            const auto hhef = extractType(eBannerType::hoplite, enlistable);
+            hoplite->initialize(hhef, cids, {}, selectionChanged,
+                                eLanguage::zeusText(283, 14), true);
+            col1->addWidget(hoplite);
+
+            col1->layoutVerticallyWithoutSpaces();
+        }
+        {
+            const auto col2 = new eWidget(window());
+            const int www = ww/2 - pp;
+            col2->resize(www, hhh);
+            selWid->addWidget(col2);
+
+            const int hhhh = hhh/4 - pp;
+
+            navy->resize(www, hhhh);
+            navy->initialize(eEnlistedForces(), cids, {}, selectionChanged,
+                             eLanguage::zeusText(283, 6), false);
+            col2->addWidget(navy);
+
+            heroes->resize(www, hhhh);
+            eEnlistedForces efh;
+            efh.fHeroes = enlistable.fHeroes;
+            heroes->initialize(efh, cids, heroesAbroad, selectionChanged,
+                               eLanguage::zeusText(283, 9), false);
+            col2->addWidget(heroes);
+
+            mythical->resize(www, hhhh);
+            eEnlistedForces hhef;
+            for(const auto& s : enlistable.fSoldiers) {
+                const auto t = s->type();
+                if(t == eBannerType::amazon ||
+                   t == eBannerType::aresWarrior) {
+                    hhef.fSoldiers.push_back(s);
+                }
+            }
+            mythical->initialize(hhef, cids, {}, selectionChanged,
+                                 eLanguage::zeusText(283, 10), true);
+            col2->addWidget(mythical);
+
+            allies->resize(www, hhhh);
+            eEnlistedForces efa;
+            efa.fAllies = enlistable.fAllies;
+            allies->initialize(efa, {cids[0]}, {}, selectionChanged,
+                               eLanguage::zeusText(283, 24), false);
+            col2->addWidget(allies);
+
+            col2->layoutVerticallyWithoutSpaces();
+        }
+
+        selWid->layoutHorizontallyWithoutSpaces();
+    }
+
+    innerWid->addWidget(buttonsWid);
+    innerWid->layoutVerticallyWithoutSpaces();
+}
+
+void eEnlistForcesDialog::paintEvent(ePainter& p) {
+    mFrame++;
+    bool updateTips = false;
+    for(int i = 0; i < int(mTips.size()); i++) {
+        const auto& tip = mTips[i];
+        if(mFrame > tip.fLastFrame) {
+            tip.fWid->deleteLater();
+            mTips.erase(mTips.begin() + i);
+            updateTips = true;
+            i--;
+        }
+    }
+    if(updateTips) updateTipPositions();
+    eClosableDialog::paintEvent(p);
+}
+
+void eEnlistForcesDialog::updateTipPositions() {
+    const int p = padding();
+    int y = 6*p;
+    for(const auto& tip : mTips) {
+        const auto w = tip.fWid;
+        w->setY(y);
+        const int wh = w->height();
+        y += wh + 2*p;
+    }
+}
+

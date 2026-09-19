@@ -1,0 +1,142 @@
+id,building,column_1_based,row_1_based,width,height,note
+E1,Elite plot 1,11,6,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-1,Fish Pond,11,2,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E2,Elite plot 2,16,6,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-2,Fish Pond,16,2,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E3,Elite plot 3,21,6,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-3,Fish Pond,21,2,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E4,Elite plot 4,26,6,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-4,Fish Pond,26,2,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E5,Elite plot 5,11,13,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-5,Fish Pond,11,17,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E6,Elite plot 6,16,13,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-6,Fish Pond,16,17,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E7,Elite plot 7,21,13,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-7,Fish Pond,21,17,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+E8,Elite plot 8,26,13,4,4,"Place separate elite housing here. Target: Estate, 20 residents. The boulevard gives road access across its planted verge. Water is supplied on site."
+pond-8,Fish Pond,26,17,4,4,Permanent rear beauty reserve. Build before the elite plot. The pond is decorative; it does not distribute drinking water.
+museum,Museum,3,5,6,6,One per city. Requires curators from a road-connected University in the support yard. Both the building and actual curator visits matter.
+observatory,Observatory,4,12,5,5,Requires trained astronomers from a University. Its roaming astronomers serve this street.
+library,Bibliotheke,30,9,2,2,Produces scholars directly when staffed.
+lab,Laboratory,32,7,4,4,Requires inventors from an Inventors’ Workshop. The workshop itself is in the support yard.
+tax,Tax Office,9,9,2,2,Requires the city's Palace. Tax collection is not an evolution requirement.
+maintenance,Maintenance Office,9,12,2,2,Keep staffed before occupying houses. Superintendent visits reduce fire and collapse risk throughout the street.
+clinic,Infirmary,30,12,4,4,"Healers serve all eight elite plots along the street. Included for health, especially on higher difficulties; health is separate from the culture score."
+watch,Watchpost · optional,34,12,2,2,"Optional: elite homes reduce unrest in the model. This is a reserve for local security, not a housing upgrade requirement."
+agora,Grand Agora,36,9,6,5,"Build across the existing straight road, with three 2×2 stalls on each side. Roadblock goes immediately beyond its eastern end, not between the Agora and the homes."
+vendor-0,Food stall,36,9,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+vendor-1,Fleece stall,38,9,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+vendor-2,Oil stall,40,9,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+vendor-3,Wine stall,36,12,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+vendor-4,Armor stall,38,12,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+vendor-5,Chariots stall,40,12,2,2,Part of the Grand Agora. Give the buyer road access to the appropriate stock source beyond the roadblock.
+park-9-0,Park,10,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-10-0,Park,11,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-11-0,Park,12,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-12-0,Park,13,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-13-0,Park,14,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-0,Park,15,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-15-0,Park,16,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-16-0,Park,17,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-17-0,Park,18,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-18-0,Park,19,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-0,Park,20,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-20-0,Park,21,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-21-0,Park,22,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-22-0,Park,23,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-23-0,Park,24,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-0,Park,25,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-25-0,Park,26,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-26-0,Park,27,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-27-0,Park,28,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-28-0,Park,29,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-0,Park,30,1,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-1,Park,10,2,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-1,Park,15,2,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-1,Park,20,2,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-1,Park,25,2,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-1,Park,30,2,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-2,Park,10,3,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-2,Park,15,3,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-2,Park,20,3,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-2,Park,25,3,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-2,Park,30,3,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-3,Park,10,4,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-3,Park,15,4,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-3,Park,20,4,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-3,Park,25,4,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-3,Park,30,4,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-4,Park,10,5,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-4,Park,15,5,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-4,Park,20,5,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-4,Park,25,5,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-4,Park,30,5,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-16,Park,10,17,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-16,Park,15,17,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-16,Park,20,17,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-16,Park,25,17,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-16,Park,30,17,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-17,Park,10,18,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-17,Park,15,18,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-17,Park,20,18,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-17,Park,25,18,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-17,Park,30,18,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-18,Park,10,19,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-18,Park,15,19,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-18,Park,20,19,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-18,Park,25,19,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-18,Park,30,19,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-19,Park,10,20,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-19,Park,15,20,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-19,Park,20,20,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-19,Park,25,20,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-19,Park,30,20,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-9-20,Park,10,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-10-20,Park,11,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-11-20,Park,12,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-12-20,Park,13,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-13-20,Park,14,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-20,Park,15,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-15-20,Park,16,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-16-20,Park,17,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-17-20,Park,18,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-18-20,Park,19,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-20,Park,20,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-20-20,Park,21,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-21-20,Park,22,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-22-20,Park,23,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-23-20,Park,24,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-20,Park,25,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-25-20,Park,26,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-26-20,Park,27,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-27-20,Park,28,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-28-20,Park,29,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-29-20,Park,30,21,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-5,Park,15,6,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-6,Park,15,7,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-7,Park,15,8,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-8,Park,15,9,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-5,Park,20,6,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-6,Park,20,7,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-7,Park,20,8,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-8,Park,20,9,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-5,Park,25,6,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-6,Park,25,7,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-7,Park,25,8,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-8,Park,25,9,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-12,Park,15,13,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-13,Park,15,14,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-14,Park,15,15,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-14-15,Park,15,16,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-12,Park,20,13,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-13,Park,20,14,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-14,Park,20,15,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-19-15,Park,20,16,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-12,Park,25,13,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-13,Park,25,14,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-14,Park,25,15,1,1,One ordinary park tile. Keep this space green; it is not a road.
+park-24-15,Park,25,16,1,1,One ordinary park tile. Keep this space green; it is not a road.
+road,Continuous road,1,11,43,1,"Build first, including beneath the Agora."
+roadblock-0,Roadblock,2,11,1,1,Place on existing road. Keep city intersections outside.
+roadblock-1,Roadblock,42,11,1,1,Place on existing road. Keep city intersections outside.
+boulevard,Boulevard with both planted verges,11,10,19,3,Existing road is the middle row. Keep verges clear.

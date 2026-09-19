@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>eZeus runtime probe</title>
+<style>body{background:#162027;color:#e6e9ed;font:18px system-ui;margin:32px}canvas{border:1px solid #586b76}pre{white-space:pre-wrap}</style>
+<h1>Browser runtime diagnostic</h1><p>Tests worker rendering and browser storage; this is not the game.</p>
+<canvas id="canvas" width="640" height="360"></canvas><pre id="log"></pre>
+<script>
+window.probe={phase:'loading',errors:[]};
+const log=message=>document.querySelector('#log').textContent+=String(message)+'\n';
+const sync=populate=>new Promise((ok,no)=>Module.FS.syncfs(populate,e=>e?no(e):ok()));
+var Module={canvas:document.querySelector('#canvas'),print:log,printErr:log,
+ onAbort(error){probe.phase='failed';probe.errors.push(String(error));},
+ async onRuntimeInitialized(){try{
+  Module.FS.mkdir('/save');Module.FS.mount(Module.FS.filesystems.IDBFS,{},'/save');
+  await sync(true);
+  probe.previous=Module.FS.analyzePath('/save/output.txt').exists?Module.FS.readFile('/save/output.txt',{encoding:'utf8'}):null;
+  Module.FS.writeFile('/save/input.txt','browser-to-worker');
+  probe.phase='running';Module.callMain([]);
+ }catch(e){probe.phase='failed';probe.errors.push(String(e));log(e);}},
+ async onExit(code){try{
+  probe.exitCode=code;probe.frame=!!Module.probeFrame;
+  if(code!==0)throw Error('Runtime exited '+code);
+  probe.output=Module.FS.readFile('/save/output.txt',{encoding:'utf8'});
+  await sync(false);probe.phase='passed';log(JSON.stringify(probe));
+ }catch(e){probe.phase='failed';probe.errors.push(String(e));log(e);}}
+};
+</script>{{{ SCRIPT }}}</html>
